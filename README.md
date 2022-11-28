@@ -1,5 +1,9 @@
 # SQL-Queries
 ## Homework-1
+<b>Результат выполнения задания:</b>\
+[Homework-1](https://github.com/JosieVi/SQL-Queries/blob/main/Homework-1.pdf)
+или [Google Диск](https://docs.google.com/spreadsheets/d/1vVjrZCGVofFnBnsH-Ch3aMf7fGyOcTCEuH6yH3VVYHQ/edit#gid=0)
+
 Напишите SQL запросы.
 1. Выведите имя, фамилию, патронуса всех персонажей, у которых есть patronus или он известен.
 2. Выведите фамилию персонажей, у которых последняя буква в фамилии ‘e’.
@@ -29,11 +33,12 @@
 Для сообщения используйте псевдоним Founders.
 20. Используя регулярное выражение найдите фамилии персонажей, которые не начинаются с букв H, L или S и выведите их.
 
-<b>Результат выполнения задания:</b>\
-[Homework-1](https://github.com/JosieVi/SQL-Queries/blob/main/Homework-1.pdf)
-или [Google Диск](https://docs.google.com/spreadsheets/d/1vVjrZCGVofFnBnsH-Ch3aMf7fGyOcTCEuH6yH3VVYHQ/edit#gid=0)
 
 ## Homework-2
+<b>Результат выполнения задания:</b>\
+[Homework-2](https://github.com/JosieVi/SQL-Queries/blob/main/Homework-2.pdf)
+или [Google Диск](https://docs.google.com/spreadsheets/d/1vVjrZCGVofFnBnsH-Ch3aMf7fGyOcTCEuH6yH3VVYHQ/edit#gid=1451069378)
+
 Напишите SQL запросы.
 1. Выведите имя, фамилию персонажей и название книги, которая на них числится.
 2. Выведите имя, фамилию персонажей и название книги, вне зависимости от того, есть ли у них книги или нет.
@@ -43,12 +48,12 @@
 6. Используя вложенный запрос количество книг, у которых end_date больше, чем end_date у Hermione.
 7. С помощью вложенного запроса выведите имена всех патронусов, у которых владельцы старше возраста персонажа, у которого патронус Unknown.
 
-<b>Результат выполнения задания:</b>\
-[Homework-2](https://github.com/JosieVi/SQL-Queries/blob/main/Homework-2.pdf)
-или [Google Диск](https://docs.google.com/spreadsheets/d/1vVjrZCGVofFnBnsH-Ch3aMf7fGyOcTCEuH6yH3VVYHQ/edit#gid=1451069378)
-
 
 ## Homework-3
+<b>Результат выполнения задания:</b>\
+[Homework-3](https://github.com/JosieVi/SQL-Queries/blob/main/Homework-3.pdf)
+или [Google Диск](https://docs.google.com/spreadsheets/d/1-bhjlo1zv7hOhCTfojRU2rXvUY7tOQB-sksoBWhG7os/edit#gid=777468835)
+
 В БД есть 3 сущности: FIO_person, Salary и JobPosition. 		
 1. Таблица FIO_person содержит атрибуты:
 - ID (id сотрудника), 
@@ -69,7 +74,3 @@
 3. Получить список всех ФИО сотрудников по должности «Разработчик» с зарплатой, большей 10 000 рублей.
 4. Получить отсортированный в алфавитном порядке список всех существующих должностей в компании.
 5. Вывести список, содержащий ФИО, ЗП, должность и кол-во лет в должности для сотрудников, которые проработали от 1 до 10 лет.
-
-<b>Результат выполнения задания:</b>\
-[Homework-3](https://github.com/JosieVi/SQL-Queries/blob/main/Homework-3.pdf)
-или [Google Диск](https://docs.google.com/spreadsheets/d/1-bhjlo1zv7hOhCTfojRU2rXvUY7tOQB-sksoBWhG7os/edit#gid=777468835)
