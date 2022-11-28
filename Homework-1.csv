@@ -1,0 +1,104 @@
+Задание 1.,,,
+"Предусловия: установите MySQL Server и MySQL Workbench (версию ниже 8.20)
+Наша задача разобраться с простыми и немного усложненными запросами к базам данных, написанных на SQL
+Скачайте дампы базы данных Hogwarts отсюда https://drive.google.com/drive/u/3/folders/1MC0AttnmlAmugifFlX3hG6pssYZDqpPB
+Осуществите импорт таблиц, используя Workbench
+Выполните задание 1, которое вы найдете здесь https://drive.google.com/drive/u/3/folders/1Lt7CY69nR5awNs_9q0XJOHRti4vJj3Qa
+Сохраните свое решение в виде документа, куда необходимо добавить скрины отправленных запросов в CLI или Workbench
+Помните, что большинство ошибок возникает из-за неправильного синтаксиса и использования операторов. Будьте внимательные. Проверяйте результаты, отправленных запросов, чтобы быть уверенным в своем решении",,,
+№,Задание,SQL-запрос,Результат выполнения запроса
+,,USE hogwarts_hw;,
+,,"SELECT * 
+FROM characters;",
+1.,"Выведите имя, фамилию, патронуса всех персонажей, у которых есть patronus или он известен","SELECT fname, lname, patronus 
+FROM characters 
+WHERE patronus != 'Unknown';",
+2.,"Выведите фамилию персонажей, у которых последняя буква в фамилии ‘e’","SELECT fname 
+FROM characters 
+WHERE fname LIKE '%e';",
+3.,Посчитайте общий возраст всех персонажей и выведите это на экран,"SELECT SUM(age) 
+FROM characters;",
+4.,"Выведите имя, фамилию и возраст персонажей по убыванию их возраста","SELECT fname, lname, age 
+FROM characters 
+WHERE age IS NOT NULL 
+ORDER BY age DESC;",
+5.,"Выведите имя персонажа и возраст, у которых последний находится в диапазоне от 50 до 100 лет","SELECT fname, age 
+FROM characters 
+WHERE age BETWEEN 50 AND 100;",
+6.,"Выведите возраст всех персонажей так, чтобы среди них не было тех, у кого он одинаковый","SELECT DISTINCT(age) 
+FROM characters 
+WHERE age IS NOT NULL;",
+7.,"Выведите всю информацию о персонажах, у которых faculty = Gryffindor и чей возраст больше 30 лет
+
+
+Почему выводится NULL строка?","SELECT * 
+FROM characters 
+WHERE faculty = 'Gryffindor' AND age > 30 AND char_id IS NOT NULL 
+ORDER BY char_id;",
+8.,"Выведите имена первых трех факультетов из таблицы, так чтобы факультеты не повторялись",SELECT DISTINCT(faculty) FROM characters LIMIT 3;,
+9.,"Выведите имена всех персонажей, у которых имя начинается с ‘H’ и состоит из 5 букв, или чье имя начинается с ‘L’","SELECT fname 
+FROM characters 
+WHERE fname LIKE 'H____' 
+OR fname LIKE 'L%';",
+10.,Посчитайте средний возраст всех персонажей,"SELECT AVG(age) 
+FROM characters;",
+11.,"Удалите персонажа с ID = 11
+
+Перед удалением проверяю через запрос с SELECT ту информацию, которую собираюсь удалить.
+Строка, целиком состоящая из NULL значений, не удаляется несмотря на то, что отображается в результатах SELECT-запроса.","SELECT * 
+FROM characters 
+WHERE char_id = 11 AND char_id IS NOT NULL;
+
+DELETE 
+FROM characters 
+WHERE char_id = 11;",
+12.,"Выведите фамилию всех персонажей, которые содержат в ней букву ‘a’","SELECT fname 
+FROM characters 
+WHERE fname LIKE '%a%';",
+13.,"Используйте псевдоним для того, чтобы временно замените название столбца fname на Half-Blood Prince для реального принца-полукровки","SELECT fname AS ""Half-Blood Prince"" 
+FROM characters 
+WHERE fname = ""Severus"" AND lname = ""Snape"";",
+14.,"Выведите id и имена всех патронусов в алфавитном порядке, при условии что они есть или известны","SELECT char_id, fname, lname 
+FROM characters 
+WHERE fname IS NOT NULL AND lname IS NOT NULL 
+ORDER BY fname;",
+15.,"Используя оператор IN, выведите имя и фамилию тех персонажей, у которых фамилия Crabbe, Granger или Diggory","SELECT fname, lname 
+FROM characters 
+WHERE lname IN ('Crabbe', 'Granger', 'Diggory');",
+16.,Выведите минимальный возраст персонажа,"SELECT MIN(age) 
+FROM characters;",
+17.,Используя оператор UNION выберите имена из таблицы characters и названия книг из таблицы library,"SELECT fname 
+FROM characters 
+UNION 
+SELECT book_name
+FROM library 
+GROUP BY char_id;",
+,,"Не уверена, что правильно поняла смысл задания в п.17, поэтому сделала еще через JOIN объединение таблиц:
+
+SELECT characters.fname, library.book_name 
+FROM characters 
+JOIN library 
+ON characters.char_id = library.char_id;",
+18.,"Используя оператор HAVING посчитайте количество персонажей на каждом факультете, оставив только те факультеты, где количество студентов больше 1","SELECT faculty, COUNT(*) 
+FROM characters 
+GROUP BY faculty 
+HAVING COUNT(*) > 1 ;",
+19.,Используя оператор CASE опишите следующую логику:,"SELECT fname, lname,
+CASE 
+WHEN faculty = 'Gryffindor' THEN 'Godric'
+WHEN faculty = 'Slytherin' THEN 'Salazar'
+WHEN faculty = 'Ravenclaw' THEN 'Rowena'
+WHEN faculty = 'Hufflepuff' THEN 'Helga'
+ELSE 'Muggle'
+END AS 'Founders' 
+FROM characters;",
+,"Выведите имя и фамилию персонажа, а также следующее текстовое сообщение:",,
+,"Если факультет Gryffindor, то в консоли должно вывестись Godric",,
+,"Если факультет Slytherin, то в консоли должно вывестись Salazar",,
+,"Если факультет Ravenclaw, то в консоли должно вывестись Rowena",,
+,"Если факультет Hufflepuff, то в консоли должно вывестись Helga",,
+,"Если другая информация, то выводится Muggle",,
+,Для сообщения используйте псевдоним Founders,,
+20.,"Используя регулярное выражение найдите фамилии персонажей, которые не начинаются с букв H, L или S и выведите их","SELECT fname 
+FROM characters 
+WHERE fname NOT REGEXP '^h' && fname NOT REGEXP '^l' && fname NOT REGEXP '^s';",
